@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Boxeo - Todo en 1</title>
+  <style>
+    body {
+      background: url('fondo_boxeo.jpg');
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    h1 {
+      color: #ffcc00;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    h2 {
+      color: #ffcc00;
+      border-bottom: 2px solid #ff0000;
+      padding-bottom: 10px;
+      margin-top: 40px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    
+    h3 {
+      color: #ffffcc;
+    }
+    
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .nav-menu a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      background-color: rgba(255, 0, 0, 0.3);
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      border: 1px solid #ffcc00;
+    }
+    
+    .nav-menu a:hover {
+      background-color: rgba(255, 0, 0, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(255, 204, 0, 0.3);
+    }
+    
+    /* Estilo para el texto en movimiento */
+    .moving-text-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 25px 0;
+      overflow: hidden;
+      border: 2px solid #ff0000;
+    }
+    
+    .moving-text {
+      font-size: 1.8rem;
+      color: #ffcc00;
+      font-weight: bold;
+      white-space: nowrap;
+      animation: moveText 20s linear infinite;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+    
+    @keyframes moveText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    /* Estilo para las imágenes en movimiento con enlaces */
+    .moving-images-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 30px 0;
+      overflow: hidden;
+      border: 2px solid #ffcc00;
+    }
+    
+    .moving-images {
+      display: flex;
+      animation: moveImages 30s linear infinite;
+      gap: 20px;
+    }
+    
+    @keyframes moveImages {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .image-link {
+      text-decoration: none;
+      position: relative;
+      display: block;
+    }
+    
+    .moving-images img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 3px solid #ff0000;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease;
+    }
+    
+    .image-link:hover img {
+      transform: scale(1.05);
+      border-color: #ffcc00;
+    }
+    
+    .image-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffcc00;
+      padding: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .image-link:hover .image-title {
+      opacity: 1;
+    }
+    
+    /* Estilo para párrafos de contenido */
+    .content-paragraph {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+      border-left: 5px solid #ff0000;
+      line-height: 1.7;
+    }
+    
+    .content-paragraph p {
+      margin-bottom: 15px;
+      color: #f0f0f0;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+    
+    .content-paragraph strong {
+      color: #ffcc00;
+    }
+    
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #ffcc00;
+    }
+    
+    video {
+      max-width: 100%;
+      border: 3px solid #ff0000;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    }
+    
+    form {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      max-width: 600px;
+      border: 2px solid #ffcc00;
+    }
+    
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #ffcc00;
+      font-weight: bold;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ffcc00;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #ff0000;
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    
+    input[type="submit"] {
+      background: linear-gradient(to bottom, #ff0000, #cc0000);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      width: auto;
+      font-weight: bold;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    input[type="submit"]:hover {
+      background: linear-gradient(to bottom, #ff3333, #ff0000);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+    }
+    
+    hr {
+      border: none;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #ff0000, transparent);
+      margin: 40px 0;
+    }
+    
+    .section {
+      scroll-margin-top: 20px;
+    }
+    
+    .section-content {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    
+    .emoji {
+      font-size: 1.5rem;
+    }
+    
+    /* Efecto de pulso para títulos */
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #ffcc00; }
+      50% { text-shadow: 0 0 15px #ffcc00, 0 0 20px #ff0000; }
+      100% { text-shadow: 0 0 5px #ffcc00; }
+    }
+    
+    h2 {
+      animation: pulse 3s infinite;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .moving-text {
+        font-size: 1.4rem;
+      }
+      
+      .moving-images img {
+        width: 220px;
+        height: 150px;
+      }
+      
+      .nav-menu {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-menu a {
+        width: 80%;
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .content-paragraph {
+        padding: 15px;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .moving-images img {
+        width: 180px;
+        height: 120px;
+      }
+      
+      .moving-text {
+        font-size: 1.2rem;
+      }
+      
+      .content-paragraph {
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="emoji">🥊</span> Página de Boxeo <span class="emoji">🥊</span></h1>
+      
+      <nav class="nav-menu">
+        <a href="#presentacion"><span class="emoji">👤</span> Presentación</a>
+        <a href="#contacto"><span class="emoji">📩</span> Contacto</a>
+        <a href="#servicios"><span class="emoji">🥊</span> Servicios</a>
+        <a href="#opinion"><span class="emoji">📝</span> Opinión</a>
+      </nav>
+    </header>
+
+    <!-- =========================== -->
+    <!-- SECCIÓN 1 - PRESENTACIÓN -->
+    <!-- =========================== -->
+    <section id="presentacion" class="section">
+      <h2><span class="emoji">🥊</span> Presentación</h2>
+      
+      <div class="section-content">
+        <!-- TEXTO EN MOVIMIENTO -->
+        <div class="moving-text-container">
+          <div class="moving-text">
+            🥊 ¡Bienvenido al mundo del boxeo! 🥊 Disciplina, fuerza y gloria. 🥊 Entrena como un campeón. 🥊
+            Combina técnica y potencia. 🥊 La pasión por el deporte. 🥊 ¡Sé el mejor! 🥊🔥
+          </div>
+        </div>
+
+        <!-- IMÁGENES EN MOVIMIENTO CON ENLACES -->
+        <div class="moving-images-container">
+          <div class="moving-images">
+            <!-- Imagen 1 - Guantes Cleto Reyes -->
+            <a href="https://cletoreyes.com/" target="_blank" class="image-link">
+              <img src="imagen1.jpg" alt="Guantes Cleto Reyes">
+              <div class="image-title">🥊 Guantes Cleto Reyes 🥊</div>
+            </a>
+            
+            <!-- Imagen 2 - Pelea de Gervonta Davis -->
+            <a href="https://www.espn.com.mx/boxeo/nota/_/id/13037801/gervonta-davis-ry-garcia-pelea-boxeo-peso-wba-regular" target="_blank" class="image-link">
+              <img src="imagen2.jpg" alt="Pelea de Gervonta Davis">
+              <div class="image-title">🥊 Pelea de Gervonta Davis 🥊</div>
+            </a>
+            
+            <!-- Imagen 3 - Gervonta Davis -->
+            <a href="https://es.wikipedia.org/wiki/Gervonta_Davis" target="_blank" class="image-link">
+              <img src="imagen3.jpg" alt="Gervonta Davis">
+              <div class="image-title">🥊 Gervonta Davis 🥊</div>
+            </a>
+            
+            <!-- Duplicamos las imágenes para crear un efecto continuo -->
+            <a href="https://cletoreyes.com/" target="_blank" class="image-link">
+              <img src="imagen1.jpg" alt="Guantes Cleto Reyes">
+              <div class="image-title">🥊 Guantes Cleto Reyes 🥊</div>
+            </a>
+            
+            <a href="https://www.espn.com.mx/boxeo/nota/_/id/13037801/gervonta-davis-ry-garcia-pelea-boxeo-peso-wba-regular" target="_blank" class="image-link">
+              <img src="imagen2.jpg" alt="Pelea de Gervonta Davis">
+              <div class="image-title">🥊 Pelea de Gervonta Davis 🥊</div>
+            </a>
+            
+            <a href="https://es.wikipedia.org/wiki/Gervonta_Davis" target="_blank" class="image-link">
+              <img src="imagen3.jpg" alt="Gervonta Davis">
+              <div class="image-title">🥊 Gervonta Davis 🥊</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Primer párrafo de 6 líneas -->
+        <div class="content-paragraph">
+          <p>Bienvenido a la página definitiva para los amantes del <strong>boxeo</strong>, un deporte que combina disciplina, técnica y fuerza como ningún otro. El boxeo no es solo un deporte de combate; es una filosofía de vida que enseña respeto, autocontrol y superación personal. Cada golpe debe ser preciso, cada movimiento calculado y cada decisión tomada en fracciones de segundo.</p>
+          
+          <p>Nuestra pasión por este noble arte marcial nos ha llevado a crear este espacio donde convergen desde principiantes que dan sus primeros pasos en el ring hasta boxeadores profesionales que buscan perfeccionar su técnica. Creemos que el boxeo tiene el poder de transformar vidas, desarrollando no solo el cuerpo sino también el carácter y la mentalidad de quienes lo practican con dedicación.</p>
+          
+          <p>El equipo adecuado marca la diferencia entre una buena y una excelente experiencia de entrenamiento. Por eso, trabajamos exclusivamente con las mejores marcas del mercado, asegurando que cada guante, cada venda y cada protector cumpla con los más altos estándares de calidad y seguridad. La protección es nuestra prioridad número uno, porque un boxeador seguro es un boxeador confiado.</p>
+          
+          <p>Nuestra metodología de entrenamiento se basa en años de experiencia combinando técnicas tradicionales con los avances más recientes en ciencia deportiva. Desde el correcto posicionamiento de los pies hasta la rotación perfecta de la cadera para generar potencia máxima, cada aspecto del boxeo es desglosado y enseñado de manera sistemática para asegurar un aprendizaje sólido y progresivo.</p>
+          
+          <p>La comunidad que hemos construido alrededor del boxeo es diversa e inclusiva. Personas de todas las edades, géneros y niveles de condición física encuentran aquí un espacio donde pueden compartir su pasión, apoyarse mutuamente en el progreso y celebrar juntos cada logro, por pequeño que parezca. El boxeo nos une más allá de las diferencias.</p>
+          
+          <p>Explora nuestro contenido, conoce nuestros servicios y déjate inspirar por las historias de grandes campeones que comenzaron con sueños similares a los tuyos. Ya sea que busques mejorar tu condición física, aprender defensa personal o competir a nivel profesional, aquí encontrarás los recursos y el apoyo necesarios para alcanzar tus metas en el mundo del boxeo.</p>
+        </div>
+        
+        <!-- Segundo párrafo de 6 líneas -->
+        <div class="content-paragraph">
+          <p>La <strong>historia del boxeo</strong> se remonta a la antigua Grecia, donde ya era considerado uno de los deportes más nobles y exigentes. A lo largo de los siglos, ha evolucionado desde su forma más rudimentaria hasta convertirse en el deporte científico que conocemos hoy, con reglas claras que protegen la integridad de los púgiles mientras mantienen la esencia del combate deportivo.</p>
+          
+          <p>La técnica es el alma del boxeo. No se trata simplemente de golpear fuerte, sino de hacerlo de manera inteligente, conservando energía y manteniendo una defensa sólida. El footwork, la distancia, los ángulos de ataque y los contraataques son elementos que separan a los buenos boxeadores de los grandes campeones. Cada movimiento tiene un propósito y cada combinación cuenta una historia.</p>
+          
+          <p>La preparación física en el boxeo es única en el mundo deportivo. Combina la resistencia cardiovascular de un corredor de maratón, la potencia explosiva de un velocista y la fuerza mental de un ajedrecista. Los entrenamientos están diseñados para desarrollar simultáneamente velocidad, fuerza, agilidad y resistencia, creando atletas completos capaces de superar cualquier desafío físico y mental.</p>
+          
+          <p>La nutrición juega un papel fundamental en el rendimiento de un boxeador. Nuestros asesores en nutrición deportiva desarrollan planes personalizados que optimizan la energía, promueven la recuperación muscular y mantienen el peso ideal para cada categoría. Una alimentación inteligente puede marcar la diferencia entre ganar y perder, especialmente en las últimas rondas de un combate exigente.</p>
+          
+          <p>La psicología del boxeo es tan importante como la parte física. Aprender a controlar los nervios antes de un combate, mantener la concentración durante las rondas y superar la adversidad cuando las cosas no salen como se planeó son habilidades mentales que se desarrollan con la práctica constante. El boxeo te enseña a ser fuerte incluso cuando te sientes débil.</p>
+          
+          <p>El futuro del boxeo se está escribiendo ahora mismo, con nuevas generaciones de talentos que combinan las lecciones del pasado con las innovaciones del presente. La tecnología ha llegado al ring con equipos de medición de impacto, análisis de movimiento mediante IA y programas de entrenamiento virtual que permiten a los boxeadores optimizar su rendimiento como nunca antes había sido posible.</p>
+        </div>
+        
+        <!-- VIDEO entre el segundo y tercer párrafo -->
+        <div class="video-container">
+          <p style="color:#ffffcc; font-size:1.2rem; font-weight:bold;">
+            <span class="emoji">🎥</span> Video de entrenamiento de boxeo profesional:
+          </p>
+          <video width="640" controls poster="imagen1.jpg">
+            <source src="video_boxeo.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+          <p style="color:#cccccc; margin-top:10px;">
+            Aprende técnicas profesionales de boxeo con nuestro video exclusivo
+          </p>
+        </div>
+        
+        <!-- Tercer párrafo de 6 líneas -->
+        <div class="content-paragraph">
+          <p>El <strong>equipamiento de calidad</strong> no es un lujo, es una necesidad en el boxeo. Unos guantes mal fabricados pueden causar lesiones en las manos, un casco inadecuado no ofrece la protección necesaria y unas zapatillas sin el soporte correcto afectan el equilibrio y la movilidad. Por eso insistimos en que cada pieza de equipo sea seleccionada cuidadosamente según las necesidades específicas de cada boxeador.</p>
+          
+          <p>Los diferentes estilos de boxeo requieren diferentes enfoques de entrenamiento. Mientras que un boxeador out-fighter se enfoca en mantener la distancia y usar su jab, un in-fighter busca entrar a corta distancia para conectar golpes potentes al cuerpo. Un boxeador swarmer presiona constantemente a su oponente, y un boxeador counter-puncher espera pacientemente para castigar los errores del rival. Cada estilo tiene sus ventajas y desafíos.</p>
+          
+          <p>La seguridad es nuestra máxima prioridad en todos nuestros programas. Cada sesión de sparring es supervisada por entrenadores certificados, se utilizan protectores adecuados y se establecen reglas claras para minimizar riesgos. Creemos que se puede entrenar duro y competir con intensidad manteniendo siempre el respeto por la integridad física del compañero de entrenamiento.</p>
+          
+          <p>Las competiciones y torneos son parte fundamental del desarrollo de un boxeador. Organizamos eventos periódicos donde nuestros alumnos pueden poner en práctica lo aprendido en un ambiente controlado y competitivo. Estas experiencias son invaluables para desarrollar confianza, aprender a manejar la presión y entender las dinámicas reales de un combate de boxeo.</p>
+          
+          <p>La comunidad internacional de boxeo es vibrante y solidaria. A través de nuestra red de contactos, facilitamos intercambios con gimnasios en otros países, participamos en campamentos de entrenamiento internacionales y mantenemosnos actualizados con las últimas tendencias y técnicas que se desarrollan en los principales centros de boxeo del mundo. El aprendizaje nunca termina en este deporte.</p>
+          
+          <p>El legado del boxeo trasciende el ring. Los valores que se aprenden en este deporte -disciplina, respeto, perseverancia y coraje- se aplican en todos los aspectos de la vida. Muchos de nuestros exalumnos han llevado estas lecciones a sus carreras profesionales, relaciones personales y proyectos de vida, demostrando que el boxeo no solo forma buenos deportistas, sino mejores seres humanos.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- =========================== -->
+    <!-- SECCIÓN 2 - CONTACTO -->
+    <!-- =========================== -->
+    <section id="contacto" class="section">
+      <h2><span class="emoji">📩</span> Formulario de Contacto</h2>
+      
+      <div class="section-content">
+        <form action="mailto:TU_CORREO@gmail.com" method="post" enctype="text/plain">
+          <label for="nombre"><span class="emoji">👤</span> Nombre:</label>
+          <input type="text" id="nombre" name="Nombre" required placeholder="Tu nombre completo">
+
+          <label for="email"><span class="emoji">📧</span> Email:</label>
+          <input type="email" id="email" name="Email" required placeholder="ejemplo@email.com">
+
+          <label for="telefono"><span class="emoji">📱</span> Teléfono:</label>
+          <input type="tel" id="telefono" name="Telefono" placeholder="+34 123 456 789">
+
+          <label for="direccion"><span class="emoji">🏠</span> Dirección:</label>
+          <input type="text" id="direccion" name="Direccion" placeholder="Tu dirección">
+
+          <label for="mensaje"><span class="emoji">💬</span> Mensaje:</label>
+          <textarea id="mensaje" name="Mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+
+          <input type="submit" value="📤 Enviar Mensaje">
+        </form>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- =========================== -->
+    <!-- SECCIÓN 3 - SERVICIOS -->
+    <!-- =========================== -->
+    <section id="servicios" class="section">
+      <h2><span class="emoji">🥊</span> Menú de Servicios y Productos</h2>
+      
+      <div class="section-content">
+        <form action="mailto:TU_CORREO@gmail.com" method="post" enctype="text/plain">
+          <h3><span class="emoji">📁</span> Categoría:</h3>
+          <select name="Categoria" required>
+            <option value="" disabled selected>Selecciona una categoría</option>
+            <option>🥊 Guantes de Boxeo</option>
+            <option>🛡️ Equipamiento y Protección</option>
+            <option>👕 Ropa Deportiva</option>
+            <option>🎽 Accesorios</option>
+            <option>🏋️ Servicios de Entrenamiento</option>
+          </select>
+
+          <h3><span class="emoji">🏷️</span> Marcas de Guantes:</h3>
+          <select name="Marca">
+            <option value="" disabled selected>Selecciona una marca</option>
+            <option>🥊 Cleto Reyes</option>
+            <option>🥊 Everlast</option>
+            <option>🥊 Venum</option>
+            <option>🥊 RDX</option>
+            <option>🥊 Adidas Boxing</option>
+            <option>🥊 Hayabusa</option>
+          </select>
+
+          <h3><span class="emoji">⚖️</span> OZ (peso) de los guantes:</h3>
+          <select name="OZ">
+            <option value="" disabled selected>Selecciona un peso</option>
+            <option>6 OZ (Competencia)</option>
+            <option>8 OZ (Competición ligera)</option>
+            <option>10 OZ (Sparring ligero)</option>
+            <option>12 OZ (Sparring medio)</option>
+            <option>14 OZ (Sparring pesado)</option>
+            <option>16 OZ (Entrenamiento)</option>
+            <option>18 OZ (Entrenamiento pesado)</option>
+          </select>
+
+          <h3><span class="emoji">🛒</span> Productos Disponibles:</h3>
+          <select name="Producto">
+            <option value="" disabled selected>Selecciona un producto</option>
+            <option>🥊 Guantes profesionales</option>
+            <option>🥊 Guantes de sparring</option>
+            <option>🥊 Guantes para saco</option>
+            <option>🥊 Saco de boxeo</option>
+            <option>🥊 Saco de pera</option>
+            <option>🥊 Saco de agua</option>
+            <option>🦷 Protector bucal</option>
+            <option>🩹 Vendas elásticas</option>
+            <option>⛑️ Casco protector</option>
+            <option>🩲 Coquilla</option>
+            <option>🔄 Cuerda para saltar</option>
+            <option>👐 Manoplas / mitts</option>
+          </select>
+
+          <h3><span class="emoji">🏋️</span> Servicios:</h3>
+          <select name="Servicio">
+            <option value="" disabled selected>Selecciona un servicio</option>
+            <option>👶 Clase principiante</option>
+            <option>👨 Clase intermedia</option>
+            <option>👴 Clase avanzada</option>
+            <option>💪 Entrenamiento personal</option>
+            <option>🥊 Rutina de golpeo</option>
+            <option>🤼 Sparring técnico</option>
+            <option>📅 Plan mensual</option>
+            <option>📆 Plan anual</option>
+          </select>
+
+          <input type="submit" value="✅ Enviar Pedido">
+        </form>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- =========================== -->
+    <!-- SECCIÓN 4 - OPINIÓN -->
+    <!-- =========================== -->
+    <section id="opinion" class="section">
+      <h2><span class="emoji">📝</span> Opinión</h2>
+      
+      <div class="section-content">
+        <p style="color:#ffcc00; font-size:1.1rem; margin-bottom:15px;">
+          Tu opinión es muy importante para nosotros. Comparte tu experiencia o sugerencias:
+        </p>
+        
+        <form action="mailto:TU_CORREO@gmail.com" method="post" enctype="text/plain">
+          <label for="opinion"><span class="emoji">💭</span> Comparte tu opinión:</label>
+          <textarea id="opinion" name="Opinion" rows="6" placeholder="Escribe tu opinión aquí..." required></textarea>
+          
+          <input type="submit" value="📤 Enviar Opinión">
+        </form>
+      </div>
+    </section>
+
+    <br><br>
+    
+    <!-- TEXTO EN MOVIMIENTO EN EL PIE -->
+    <div class="moving-text-container">
+      <div class="moving-text">
+        🥊 ¡Gracias por visitar nuestra página de boxeo! 🥊 ¡Entrena duro, pelea justo! 🥊 
+        Visítanos pronto para más contenido. 🥊 El boxeo es más que un deporte, es un estilo de vida. 🥊
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Efecto adicional para las imágenes en movimiento al pasar el ratón
+    document.addEventListener('DOMContentLoaded', function() {
+      const movingImages = document.querySelector('.moving-images');
+      
+      movingImages.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+      });
+      
+      movingImages.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+      });
+      
+      // Efecto para los enlaces de navegación
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 20,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Confirmación para enlaces de imágenes
+      const imageLinks = document.querySelectorAll('.image-link');
+      imageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const title = this.querySelector('.image-title').textContent;
+          if (!confirm(`¿Deseas visitar la página de ${title}?`)) {
+            e.preventDefault();
+          }
+        });
+      });
+      
+      // Efecto de aparición para los párrafos
+      const contentParagraphs = document.querySelectorAll('.content-paragraph');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      contentParagraphs.forEach(paragraph => {
+        paragraph.style.opacity = '0';
+        paragraph.style.transform = 'translateY(20px)';
+        paragraph.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(paragraph);
+      });
+    });
+  </script>
+</body>
+</html>
